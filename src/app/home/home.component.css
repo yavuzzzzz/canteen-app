@@ -1,0 +1,44 @@
+.backgroundImage {
+    background-image: url("src/assets/kantin.jpg");
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: -1;
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+
+}
+
+h2 {
+    text-align: center;
+    color: antiquewhite;
+    font-style: italic;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.register {
+    margin-top: 5px;
+    margin-bottom: 10px;
+    display: flex;
+    justify-content: center;
+}
+
+.login {
+    margin-top: 5px;
+    margin-bottom: 10px;
+    display: flex;
+    justify-content: center;
+}
+
+h5 {
+    color: antiquewhite;
+}

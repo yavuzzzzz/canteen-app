@@ -1,0 +1,50 @@
+<app-navbar></app-navbar>
+<hr>
+<h2 style="padding-left: 10%;">sipariş sepetim</h2>
+<hr>
+
+
+<div class="container" style="margin: 5% 5% 5% 5% ;">
+    <div class="row">
+        <div class="col-md-8">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">ürün</th>
+                        <th scope="col">ücret</th>
+                        <th scope="col">iptal</th>
+                    </tr>
+                </thead>
+                <tbody *ngFor="let product of cartlist | slice : 0:50 ">
+                    <tr>
+                        <th scope="row">1</th>
+                        <td>{{product.productResponse.productName}}</td>
+                        <td>{{product.productResponse.price}}</td>
+                        <td><button (click)="delete(product.addToCartId)" type="button"
+                                class="btn btn-outline-danger">siparişi sil</button>
+                        </td>
+                    </tr>
+
+
+
+                </tbody>
+            </table>
+
+        </div>
+
+        <div class="col-md-4">
+            <div class="card text-center mb-3" style="width: 18rem;">
+                <div class="card-body">
+
+                    <p class="card-text">sepetindeki toplam tutar</p>
+                    <h2><strong>{{total}}</strong>TL</h2>
+                    <button (click)="buyBasket()" class="btn btn-primary">Sİparişi onayla</button>
+
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+</div>

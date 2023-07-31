@@ -1,0 +1,108 @@
+<app-navbar></app-navbar>
+
+
+
+<h4 style="text-align: center; color: darkred; padding-top:20px;">Hoş Geldiniz</h4>
+<p style="text-align: center;">Aşağıdaki ürünlerden seçiminizi yapabilirsiniz</p>
+<hr>
+<div class="row" style="padding-left: 3%; padding-right: 3%;">
+    <div class="col-lg-2 col-md-4">
+        <div style="border: 12px; padding-top:10px; ">
+            <h5 class="list-group-item list-group-item-action"><em>Kategori</em></h5>
+            <div class="list-group">
+                <button [class]=" getCurrentCategoryClass(null)" (click)="setCurrentCategory(null)"
+                    type="button">Hepsi</button>
+                <button *ngFor="let category of categoryList" [class]=" getCurrentCategoryClass(category)"
+                    (click)="setCurrentCategory(category)" type="button">{{category.categoryName}}</button>
+            </div>
+        </div>
+    </div> <!-- Kategori kısmı -->
+
+    <div class="col-md-9">
+
+
+        <form style="padding-top:10px;" role="search">
+
+            <div class="input-group-text">
+                <input type="search" class="form-control " placeholder="Aradığınız ürünü yazınız" aria-label="Search">
+                <i style="margin-left: 10px;" class="bi bi-search"></i>
+            </div>
+        </form> <!--   arama cubugu -->
+
+        <hr>
+        <div class="row d-flex justify-content-end align-items-center">
+            <div class="d-flex justify-content-end">
+
+                <div class="btn-group">
+                    <button type="button" class="btn btn-outline-secondary">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
+                            class="bi bi-list" viewBox="0 0 16 16">
+                            <path fill-rule="evenodd"
+                                d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5z" />
+                        </svg>
+                        <span class="visually-hidden">Button</span>
+                    </button>
+                    <button type="button" class="btn btn-outline-secondary">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
+                            class="bi bi-grid" viewBox="0 0 16 16">
+                            <path
+                                d="M1 2.5A1.5 1.5 0 0 1 2.5 1h3A1.5 1.5 0 0 1 7 2.5v3A1.5 1.5 0 0 1 5.5 7h-3A1.5 1.5 0 0 1 1 5.5v-3zM2.5 2a.5.5 0 0 0-.5.5v3a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5v-3a.5.5 0 0 0-.5-.5h-3zm6.5.5A1.5 1.5 0 0 1 10.5 1h3A1.5 1.5 0 0 1 15 2.5v3A1.5 1.5 0 0 1 13.5 7h-3A1.5 1.5 0 0 1 9 5.5v-3zm1.5-.5a.5.5 0 0 0-.5.5v3a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5v-3a.5.5 0 0 0-.5-.5h-3zM1 10.5A1.5 1.5 0 0 1 2.5 9h3A1.5 1.5 0 0 1 7 10.5v3A1.5 1.5 0 0 1 5.5 15h-3A1.5 1.5 0 0 1 1 13.5v-3zm1.5-.5a.5.5 0 0 0-.5.5v3a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5v-3a.5.5 0 0 0-.5-.5h-3zm6.5.5A1.5 1.5 0 0 1 10.5 9h3a1.5 1.5 0 0 1 1.5 1.5v3a1.5 1.5 0 0 1-1.5 1.5h-3A1.5 1.5 0 0 1 9 13.5v-3zm1.5-.5a.5.5 0 0 0-.5.5v3a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5v-3a.5.5 0 0 0-.5-.5h-3z" />
+                        </svg>
+                        <span class="visually-hidden">Button</span>
+                    </button>
+
+                </div>
+            </div>
+        </div><!--  sınıflandırma butonları -->
+
+
+        <div class="container py-5 bg-light">
+            <div class="row">
+                <div class="ürün d-flex-content-center align-items-center">
+                    <div class="ürünadi  col-lg-2 col-mb-4 mx-3 mb-3 " style="background-color: white;"
+                        *ngFor="let procult of filteredItems | slice : 0:150 | productSearch :filterText">
+                        <img src="https://www.formsante.com.tr/wp-content/uploads/2021/07/kahve-150x150.jpg"
+                            alt="Kahve">
+                        <h5>{{procult.productName}}</h5>
+                        <h6>{{procult.price}}₺</h6>
+                        <p>Stok: {{procult.unitInStock}} Adet</p>
+                        <button type="button" class="btn btn-outline-dark ms-auto ekle"
+                            (click)="addBasket(procult.productId,procult.productName)">Ekle</button>
+                        <button type="button" class="btn btn-outline-dark ms-auto ekle">Ekle 2</button>
+                    </div>
+                </div>
+            </div>
+        </div> <!-- ürün kataloğu -->
+
+
+
+        <div class="container mt-5 py-5 bg-light">
+            <div *ngFor="let procult of filteredItems | slice : 0:50 | productSearch :filterText"
+                class="row d-flex align-items-center" style="background-color: white;">
+                <hr>
+                <div class="col-lg-2">
+                    <img src="https://www.formsante.com.tr/wp-content/uploads/2021/07/kahve-150x150.jpg" alt="Kahve"
+                        class="img-fluid" width="70%">
+                </div>
+                <div class="col-lg-10   ">
+                    <div class="row  ">
+                        <div class="col-lg-4">
+                            <h5>Kahve 1</h5>
+
+                        </div>
+                        <div class="col-lg-3">
+                            <h6>6₺</h6>
+                        </div>
+                        <div class="col-lg-3">
+                            <p>Stok: 20 Adet</p>
+                        </div>
+                        <div class="col-lg-2">
+                            <button type="button" class="btn btn-outline-dark ms-auto ekle"
+                                (click)="addBasket(procult.productId,procult.productName)">Ekle</button>
+                            <button type="button" class="btn btn-outline-dark ms-auto ekle">Ekle 2</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div> 
+    </div><!--  table seklinde ürün kataloğu -->

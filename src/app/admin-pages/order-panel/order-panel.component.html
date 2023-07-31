@@ -1,0 +1,27 @@
+<div *ngFor="let orderList of orders |slice : 0:25  ">
+    <div class="accordion-body">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">ürün id</th>
+                    <th scope="col">Müşteri Adı</th>
+                    <th scope="col">ürün Fiyatı</th>
+                    <th scope="col">Ürün Stoğu</th>
+                </tr>
+            </thead>
+            <tbody *ngFor="let orderlist of orderList.orderResponse |slice : 0:25 let i = index ">
+                <!-- index her forda artacak -->
+                <tr>
+                    <th scope="row">{{i+1}}</th>
+                    <td>{{orderlist.productId}}</td>
+                    <td>{{orderlist.userName}}</td>
+                    <td>{{orderlist.price}}</td>
+                    <td>{{orderlist.unitInStock}}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<p>Sipariş Paneli gösteriliyor</p>
